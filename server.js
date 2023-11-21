@@ -15,6 +15,7 @@ app.use(cors());
 
 const authController = require("./controllers/authController");
 const religionController = require("./controllers/religionController");
+const genderController = require("./controllers/genderController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -46,6 +47,14 @@ app.post('/api/v1/religion', religionController.handleCreateReligionData);
 app.get('/api/v1/religion', religionController.handleGetAllReligionData);
 
 /* -------------- End Religion Endpoint -------------- */
+
+
+/* -------------- Gender Endpoint -------------- */
+
+app.post('/api/v1/gender', genderController.handleCreateGenderData);
+app.get('/api/v1/gender', genderController.handleGetAllGenderData);
+
+/* -------------- End Gender Endpoint -------------- */
 
 
 // ------------------------- End Define Routes ------------------------- //
