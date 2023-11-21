@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      Users.hasOne(models.UserDetails);
+    
     }
   }
   Users.init({
@@ -19,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     memberNumber: DataTypes.STRING,
     phoneNumber: DataTypes.STRING,
-    registrationDate: DataTypes.STRING
+    registrationDate: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Users',

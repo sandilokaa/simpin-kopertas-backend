@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 
+const fileUpload = require("./utils/fileUpload");
+
 const app = express();
 const PORT = 8080;
 
@@ -11,11 +13,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 
+// ------------------------- Public File Access ------------------------- //
+
+app.use("/storages", express.static(path.join(__dirname, "storages")));
+
+// ------------------------- End Public File Access ------------------------- //
+
+
 // ------------------------- Import Controllers ------------------------- //
 
 const authController = require("./controllers/authController");
 const religionController = require("./controllers/religionController");
 const genderController = require("./controllers/genderController");
+const userController = require("./controllers/userController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -55,6 +65,14 @@ app.post('/api/v1/gender', genderController.handleCreateGenderData);
 app.get('/api/v1/gender', genderController.handleGetAllGenderData);
 
 /* -------------- End Gender Endpoint -------------- */
+
+
+/* -------------- User Endpoint -------------- */
+
+// app.put('/api/v1/complete-profile', middleware.authenticate, fileUpload.single('picture'), userController.handleCreateCompleteProfile);
+app.get('/api/v1/complete-profile', middleware.authenticate, userController.handleGetCompleteProfile);
+
+/* -------------- End User Endpoint -------------- */
 
 
 // ------------------------- End Define Routes ------------------------- //
