@@ -23,6 +23,47 @@ const handleUserRegister = async (req, res) => {
 
 };
 
-/* ------------------- Handle User Register ------------------- */
+/* ------------------- End Handle User Register ------------------- */
 
-module.exports = { handleUserRegister };
+
+/* ------------------- Handle User Login ------------------- */
+
+const handleUserLogin = async (req, res) => {
+
+    const { email, password } = req.body;
+
+    const { status, status_code, message, data} = await authService.handleUserLogin({
+        email,
+        password
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+
+};
+
+/* ------------------- End Handle User Login ------------------- */
+
+
+/* ------------------- Handle Current User ------------------- */
+
+const handleCurrentUser = async (req, res) => {
+    
+    const currentUser = req.user;
+
+    res.status(200).send({
+        status: true,
+        message: "Successfully obtained user data that is currently logged in (:",
+        data: {
+            currentUser: currentUser,
+        }
+    });
+};
+
+/* ------------------- End Handle Current User ------------------- */
+
+
+module.exports = { handleUserRegister, handleUserLogin, handleCurrentUser };

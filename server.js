@@ -14,6 +14,7 @@ app.use(cors());
 // ------------------------- Import Controllers ------------------------- //
 
 const authController = require("./controllers/authController");
+const religionController = require("./controllers/religionController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -21,7 +22,7 @@ const authController = require("./controllers/authController");
 
 // ------------------------- Import middlewares ------------------------- //
 
-
+const middleware = require("./middlewares/auth");
 
 // ------------------------- End Import middlewares ------------------------- //
 
@@ -33,8 +34,19 @@ const authController = require("./controllers/authController");
 /* -------------- Auth Endpoint -------------- */
 
 app.post('/api/v1/auth/register', authController.handleUserRegister);
+app.post('/api/v1/auth/login', authController.handleUserLogin);
+app.get('/api/v1/auth/me', middleware.authenticate, authController.handleCurrentUser);
 
 /* -------------- End Auth Endpoint -------------- */
+
+
+/* -------------- Religion Endpoint -------------- */
+
+app.post('/api/v1/religion', religionController.handleCreateReligionData);
+app.get('/api/v1/religion', religionController.handleGetAllReligionData);
+
+/* -------------- End Religion Endpoint -------------- */
+
 
 // ------------------------- End Define Routes ------------------------- //
 
