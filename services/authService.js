@@ -1,4 +1,5 @@
 const authRepository = require("../repositories/authRepository");
+const userRepository = require("../repositories/userRepository");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -11,6 +12,7 @@ class AuthService {
     /* ------------------- Handle User Register ------------------- */
 
     static async handleUserRegister({
+        userId,
         name,
         email,
         password,
@@ -126,12 +128,15 @@ class AuthService {
                     registrationDate
                 });
 
+                const handleCreatedCompleteProfile = await userRepository.handleCreateCompleteProfile({ userId: handleUserRegistered.id });
+
                 return {
                     status: true,
                     status_code: 201,
                     message: "Successfully registered user!",
                     data: {
                         registeredUser: handleUserRegistered,
+                        completedProfile: handleCreatedCompleteProfile
                     },
                 };
             }

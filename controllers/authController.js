@@ -4,9 +4,10 @@ const authService = require("../services/authService");
 
 const handleUserRegister = async (req, res) => {
 
-    const { name, email, password, memberNumber, phoneNumber, registrationDate } = req.body;
+    const { userId, name, email, password, memberNumber, phoneNumber, registrationDate } = req.body;
 
     const { status, status_code, message, data} = await authService.handleUserRegister({
+        userId,
         name,
         email,
         password,
