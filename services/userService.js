@@ -1,5 +1,5 @@
 const userRepository = require("../repositories/userRepository");
-const { use } = require("../server");
+const fileRemove = require("../utils/fileRemove");
 
 class UserService {
 
@@ -79,6 +79,8 @@ class UserService {
 
                 if (!picture){
                     picture = handleGetedCompleteProfileByUserId.picture;
+                } else {
+                    fileRemove(handleGetedCompleteProfileByUserId.picture)
                 }
 
             }

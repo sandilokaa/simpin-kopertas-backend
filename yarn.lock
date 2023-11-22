@@ -931,6 +931,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fs-extra@npm:^11.1.1":
+  version: 11.1.1
+  resolution: "fs-extra@npm:11.1.1"
+  dependencies:
+    graceful-fs: ^4.2.0
+    jsonfile: ^6.0.1
+    universalify: ^2.0.0
+  checksum: fb883c68245b2d777fbc1f2082c9efb084eaa2bbf9fddaa366130d196c03608eebef7fb490541276429ee1ca99f317e2d73e96f5ca0999eefedf5a624ae1edfd
+  languageName: node
+  linkType: hard
+
 "fs-extra@npm:^9.1.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
@@ -2485,6 +2496,7 @@ __metadata:
     body-parser: ^1.20.2
     cors: ^2.8.5
     express: ^4.18.2
+    fs-extra: ^11.1.1
     jsonwebtoken: ^9.0.2
     multer: ^1.4.5-lts.1
     mysql2: ^3.6.4
