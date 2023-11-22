@@ -1,38 +1,59 @@
 const userService = require("../services/userService");
 
-/* ------------------- Handle Create Complete Profile ------------------- */
+/* ------------------- Handle Update Complete Profile ------------------- */
 
-// const handleCreateCompleteProfile = async (req, res) => {
+const handleUpdateCompleteProfile = async (req, res) => {
 
-//     const userId = req.user.id;
+    const { id } = req.params;
 
-//     const { genderId, religionId, placeOfBirth, address, job } = req.body;
+    const userId = req.user.id;
 
-//     let picture = "";
+    const { 
+        name, 
+        email, 
+        password, 
+        memberNumber, 
+        phoneNumber, 
+        registrationDate, 
+        genderId, 
+        religionId, 
+        placeOfBirth, 
+        address, 
+        job 
+    } = req.body;
 
-//     if (req.file) {
-//         picture = req.file.path;
-//     }
+    let picture = "";
 
-//     const { status, status_code, message, data} = await userService.handleCreateCompleteProfile({
-//         userId,
-//         genderId, 
-//         religionId, 
-//         placeOfBirth, 
-//         address, 
-//         job, 
-//         picture
-//     });
+    if (req.file) {
+        picture = req.file.path;
+    }
 
-//     res.status(status_code).send({
-//         status: status,
-//         message: message,
-//         data: data,
-//     });
+    const { status, status_code, message, data} = await userService.handleUpdateCompleteProfile({
+        id,
+        name, 
+        email, 
+        password, 
+        memberNumber, 
+        phoneNumber, 
+        registrationDate,
+        userId,
+        genderId, 
+        religionId, 
+        placeOfBirth, 
+        address, 
+        job, 
+        picture
+    });
 
-// };
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
 
-/* ------------------- End Handle Create Complete Profile ------------------- */
+};
+
+/* ------------------- End Handle Update Complete Profile ------------------- */
 
 
 /* ------------------- Handle Get Complete Profile ------------------- */
@@ -53,5 +74,5 @@ const handleGetCompleteProfile = async (req, res) => {
 
 
 module.exports = { 
-    // handleCreateCompleteProfile, 
+    handleUpdateCompleteProfile, 
     handleGetCompleteProfile };

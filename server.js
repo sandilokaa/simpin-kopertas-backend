@@ -69,7 +69,7 @@ app.get('/api/v1/gender', genderController.handleGetAllGenderData);
 
 /* -------------- User Endpoint -------------- */
 
-// app.put('/api/v1/complete-profile', middleware.authenticate, fileUpload.single('picture'), userController.handleCreateCompleteProfile);
+app.put('/api/v1/complete-profile/:id', middleware.authenticate, fileUpload.single('picture'), userController.handleUpdateCompleteProfile);
 app.get('/api/v1/complete-profile', middleware.authenticate, userController.handleGetCompleteProfile);
 
 /* -------------- End User Endpoint -------------- */

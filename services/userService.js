@@ -3,55 +3,132 @@ const { use } = require("../server");
 
 class UserService {
 
-    /* ------------------- Handle Create Complete Profile ------------------- */
+    /* ------------------- Handle Update Complete Profile ------------------- */
 
-    // static async handleCreateCompleteProfile({
-    //     userId,
-    //     genderId, 
-    //     religionId, 
-    //     placeOfBirth, 
-    //     address, 
-    //     job, 
-    //     picture
-    // }) {
+    static async handleUpdateCompleteProfile({
+        id,
+        name, 
+        email, 
+        password, 
+        memberNumber, 
+        phoneNumber, 
+        registrationDate,
+        userId,
+        genderId, 
+        religionId, 
+        placeOfBirth, 
+        address, 
+        job, 
+        picture
+    }) {
 
-    //     try {
+        try {
+
+            const handleGetedUserById = await userRepository.handleGetUserById({ id });
+            const handleGetedCompleteProfileByUserId = await userRepository.handleGetCompleteProfileByUserId({ userId });
+
+            if (handleGetedUserById.id == id) {
+
+                if (!name){
+                    name = handleGetedUserById.name;
+                }
+
+                if (!email){
+                    email = handleGetedUserById.email;
+                }
+
+                if (!password){
+                    password = handleGetedUserById.password;
+                }
+
+                if (!memberNumber){
+                    memberNumber = handleGetedUserById.memberNumber;
+                }
+
+                if (!phoneNumber){
+                    phoneNumber = handleGetedUserById.phoneNumber;
+                }
+
+                if (!registrationDate){
+                    registrationDate = handleGetedUserById.registrationDate;
+                }
+
+                if (!userId){
+                    userId = handleGetedCompleteProfileByUserId.userId;
+                }
+
+                if (!genderId){
+                    genderId = handleGetedCompleteProfileByUserId.genderId;
+                }
+
+                if (!religionId){
+                    religionId = handleGetedCompleteProfileByUserId.religionId;
+                }
+
+                if (!placeOfBirth){
+                    placeOfBirth = handleGetedCompleteProfileByUserId.placeOfBirth;
+                }
+
+                if (!address){
+                    address = handleGetedCompleteProfileByUserId.address;
+                }
+
+                if (!job){
+                    job = handleGetedCompleteProfileByUserId.job;
+                }
+
+                if (!picture){
+                    picture = handleGetedCompleteProfileByUserId.picture;
+                }
+
+            }
             
-    //         const handleCreatedCompleteProfile = await userRepository.handleCreateCompleteProfile({
-    //             userId,
-    //             genderId, 
-    //             religionId, 
-    //             placeOfBirth, 
-    //             address, 
-    //             job, 
-    //             picture
-    //         });
+            const handleUpdatedCompleteProfileByUserId = await userRepository.handleUpdateCompleteProfileByUserId({
+                userId: handleGetedUserById.id,
+                genderId, 
+                religionId, 
+                placeOfBirth, 
+                address, 
+                job, 
+                picture
+            });
 
-    //         return {
-    //             status: true,
-    //             status_code: 201,
-    //             message: "Data completed successfully(:",
-    //             data: {
-    //                 handleCreatedCompleteProfile: handleCreatedCompleteProfile,
-    //             },
-    //         };
+            const handleUpdatedUserById = await userRepository.handleUpdateUserById({
+                id,
+                name, 
+                email, 
+                password, 
+                memberNumber, 
+                phoneNumber, 
+                registrationDate,
+            });
 
-    //     } catch (err) {
+            return {
+                status: true,
+                status_code: 201,
+                message: "Data completed successfully(:",
+                data: {
+                    handleUpdatedUser: handleUpdatedUserById,
+                    handleUpdatedCompleteProfile: handleUpdatedCompleteProfileByUserId,
+                },
+            };
+
+        } catch (err) {
             
-    //         return {
-    //             status: false,
-    //             status_code: 500,
-    //             message: err,
-    //             data: {
-    //                 handleCreatedCompleteProfile: null,
-    //             },
-    //         };
+            return {
+                status: false,
+                status_code: 500,
+                message: err,
+                data: {
+                    handleCreatedCompleteProfile: null,
+                },
+            };
 
-    //     }
+        }
 
-    // };
+    };
 
-    /* ------------------- End Handle Create Complete Profile ------------------- */
+    /* ------------------- End Handle Update Complete Profile ------------------- */
 
 
     /* ------------------- Handle Get Complete Profile ------------------- */
