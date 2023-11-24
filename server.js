@@ -26,6 +26,8 @@ const authController = require("./controllers/authController");
 const religionController = require("./controllers/religionController");
 const genderController = require("./controllers/genderController");
 const userController = require("./controllers/userController");
+const typeOfVoluntaryController = require("./controllers/typeOfVoluntaryController");
+const typeOfLoanController = require("./controllers/typeOfLoanController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -65,6 +67,22 @@ app.post('/api/v1/gender', genderController.handleCreateGenderData);
 app.get('/api/v1/gender', genderController.handleGetAllGenderData);
 
 /* -------------- End Gender Endpoint -------------- */
+
+
+/* -------------- Type Of Voluntaries Endpoint -------------- */
+
+app.post('/api/v1/type-of-voluntary', typeOfVoluntaryController.handleCreateTypeOfVoluntaryData);
+app.get('/api/v1/type-of-voluntary', typeOfVoluntaryController.handleGetAllTypeOfVoluntaryData);
+
+/* -------------- End Type Of Voluntaries Endpoint -------------- */
+
+
+/* -------------- Type Of Loans Endpoint -------------- */
+
+app.post('/api/v1/type-of-loan', typeOfLoanController.handleCreateTypeOfLoanData);
+app.get('/api/v1/type-of-loan', typeOfLoanController.handleGetAllTypeOfLoanData);
+
+/* -------------- End Type Of Loans Endpoint -------------- */
 
 
 /* -------------- User Endpoint -------------- */

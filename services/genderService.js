@@ -50,7 +50,7 @@ class GenderService {
 
     };
 
-    /* ------------------- End Handle Create Religion Data ------------------- */
+    /* ------------------- End Handle Create Gender Data ------------------- */
 
 
     /* ------------------- Handle Get All Gender Data ------------------- */
