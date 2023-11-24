@@ -28,6 +28,7 @@ const genderController = require("./controllers/genderController");
 const userController = require("./controllers/userController");
 const typeOfVoluntaryController = require("./controllers/typeOfVoluntaryController");
 const typeOfLoanController = require("./controllers/typeOfLoanController");
+const principalSavingController = require("./controllers/principalSavingController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -92,6 +93,17 @@ app.get('/api/v1/complete-profile', middleware.authenticate, userController.hand
 app.get('/api/v1/complete-profile/:id', middleware.authenticate, userController.handleGetCompleteProfileById);
 
 /* -------------- End User Endpoint -------------- */
+
+
+/* -------------- Principal Saving Endpoint -------------- */
+
+app.post('/api/v1/principal-saving', middleware.authenticate, principalSavingController.handleCreatePrincipalSaving);
+app.get('/api/v1/principal-saving', middleware.authenticate, principalSavingController.handleGetAllPrincipalSaving);
+app.get('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleGetPrincipalSavingById);
+app.delete('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleDeletePrincipalSavingById);
+app.put('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleUpdatePrincipalSavingById);
+
+/* -------------- End Principal Saving Endpoint -------------- */
 
 
 // ------------------------- End Define Routes ------------------------- //
