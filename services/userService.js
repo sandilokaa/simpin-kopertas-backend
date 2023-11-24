@@ -166,6 +166,41 @@ class UserService {
     };
 
     /* ------------------- End Handle Get Complete Profile ------------------- */
+
+
+    /* ------------------- Handle Get Complete Profile By Id ------------------- */
+
+    static async handleGetCompleteProfileById({ id }){
+
+        try {
+
+            const handleGetedCompleteProfileById = await userRepository.handleGetCompleteProfileById({ id });
+
+            return {
+                status: true,
+                status_code: 200,
+                message: "Data displayed successfully!",
+                data: {
+                    getedCompleteProfileById: handleGetedCompleteProfileById,
+                },
+            };
+            
+        } catch (err) {
+            
+            return {
+                status: false,
+                status_code: 500,
+                message: err.message,
+                data: {
+                    getedCompleteProfileById: null,
+                },
+            };
+
+        }
+
+    };
+
+    /* ------------------- End Handle Get Complete Profile By Id ------------------- */
     
 };
 

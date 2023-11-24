@@ -73,6 +73,29 @@ const handleGetCompleteProfile = async (req, res) => {
 /* ------------------- End Handle Get Complete Profile ------------------- */
 
 
+/* ------------------- Handle Get Complete Profile By Id ------------------- */
+
+const handleGetCompleteProfileById = async (req, res) => {
+
+    const { id } = req.params;
+
+    const { status, status_code, message, data } = await userService.handleGetCompleteProfileById({
+        id
+    });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+
+};
+
+/* ------------------- End Handle Get Complete Profile Id ------------------- */
+
+
 module.exports = { 
     handleUpdateCompleteProfile, 
-    handleGetCompleteProfile };
+    handleGetCompleteProfile ,
+    handleGetCompleteProfileById
+};

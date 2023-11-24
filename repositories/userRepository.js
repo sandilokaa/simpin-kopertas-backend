@@ -153,6 +153,54 @@ class UserRepository {
 
     /* ------------------- End Handle Update Complete Profile By UserId ------------------- */
 
+
+    /* ------------------- Handle Get Complete Profile By Id ------------------- */
+
+    static async handleGetCompleteProfileById({ id }){
+
+        const query = {
+            where: {},
+            attributes: [
+                'id',
+                'userId',
+                'genderId',
+                'religionId',
+                'placeOfBirth',
+                'address',
+                'job',
+                'picture'
+            ],
+            include: [
+                {
+                    model: Users
+                },
+                {
+                    model: Religions,
+                    attributes: [
+                        'religionName'
+                    ]
+                },
+                {
+                    model: Genders,
+                    attributes: [
+                        'gender'
+                    ]
+                }
+            ]
+        };
+
+        if (id) {
+            query.where = { ...query.where, userId: id }
+        }
+
+        const handleGetedCompleteProfileById = UserDetails.findOne(query);
+
+        return handleGetedCompleteProfileById;
+
+    };
+
+    /* ------------------- End Handle Get Complete Profile By Id ------------------- */
+
 };
 
 module.exports = UserRepository;
