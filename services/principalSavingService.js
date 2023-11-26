@@ -4,11 +4,22 @@ class PrincipalSavingService {
 
     /* ------------------- Handle Create Principal Saving ------------------- */
 
-    static async handleCreatePrincipalSaving({ userId, depositeDate, nominal }){
+    static async handleCreatePrincipalSaving({ userId, name, depositeDate, nominal }){
 
         try {
             
             // ------------------------- Payload Validation ------------------------- //
+
+            if (!name) {
+                return {
+                    status: false,
+                    status_code: 400,
+                    message: "Name date is required!",
+                    data: {
+                        createdPrincipalSaving: null,
+                    },
+                };
+            }
 
             if (!depositeDate) {
                 return {
@@ -34,17 +45,33 @@ class PrincipalSavingService {
 
             // ------------------------- End Payload Validation ------------------------- //
 
-            const handleCreatedPrincipalSaving = await principalSavingRepository.handleCreatePrincipalSaving({ userId, depositeDate, nominal });
+            const handleGetAllPrincipalSaving = await principalSavingRepository.handleGetAllPrincipalSaving({ name });
 
-            return {
-                status: true,
-                status_code: 201,
-                message: "Successfully created principal saving (:",
-                data: {
-                    handleCreatedPrincipalSaving: handleCreatedPrincipalSaving
-                },
-            };
+            if (handleGetAllPrincipalSaving) {
 
+                return {
+                    status: false,
+                    status_code: 400,
+                    message: "Principal saving already available!",
+                    data: {
+                        handleCreatedPrincipalSaving: null,
+                    },
+                };
+
+            } else {
+
+                const handleCreatedPrincipalSaving = await principalSavingRepository.handleCreatePrincipalSaving({ userId, name, depositeDate, nominal });
+
+                return {
+                    status: true,
+                    status_code: 201,
+                    message: "Successfully created principal saving (:",
+                    data: {
+                        handleCreatedPrincipalSaving: handleCreatedPrincipalSaving
+                    },
+                };
+
+            }
 
         } catch (err) {
             
@@ -190,7 +217,7 @@ class PrincipalSavingService {
 
     /* ------------------- Handle Update Principal Saving By Id ------------------- */
 
-    static async handleUpdatePrincipalSavingById({ id, userId, depositeDate, nominal }){
+    static async handleUpdatePrincipalSavingById({ id, userId, name, depositeDate, nominal }){
 
         try {
 
@@ -202,6 +229,10 @@ class PrincipalSavingService {
                     userId = handleGetedPrincipalSavingById.userId;
                 }
 
+                if (!name) {
+                    name = handleGetedPrincipalSavingById.name;
+                }
+
                 if (!depositeDate) {
                     depositeDate = handleGetedPrincipalSavingById.depositeDate;
                 }
@@ -210,7 +241,7 @@ class PrincipalSavingService {
                     nominal = handleGetedPrincipalSavingById.nominal;
                 }
 
-                const handleUpdatedPrincipalSavingById = await principalSavingRepository.handleUpdatePrincipalSavingById({ id, depositeDate, nominal });
+                const handleUpdatedPrincipalSavingById = await principalSavingRepository.handleUpdatePrincipalSavingById({ id, name, depositeDate, nominal });
 
                 return {
                     status: true,

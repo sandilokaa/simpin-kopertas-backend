@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   PrincipalSavings.init({
     userId: DataTypes.INTEGER,
+    name:DataTypes.STRING,
     depositeDate: DataTypes.STRING,
     nominal: DataTypes.INTEGER
   }, {

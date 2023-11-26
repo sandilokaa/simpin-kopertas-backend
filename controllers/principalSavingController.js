@@ -6,10 +6,11 @@ const handleCreatePrincipalSaving = async(req, res) => {
 
     const userId = req.user.id;
 
-    const { depositeDate, nominal } = req.body;
+    const { name, depositeDate, nominal } = req.body;
 
     const { status, status_code, message, data} = await principalSavingService.handleCreatePrincipalSaving({
         userId,
+        name,
         depositeDate,
         nominal
     });
@@ -95,11 +96,12 @@ const handleUpdatePrincipalSavingById = async(req, res) => {
 
     const userId = req.user.id;
 
-    const { depositeDate, nominal } = req.body;
+    const { name, depositeDate, nominal } = req.body;
 
     const { status, status_code, message, data} = await principalSavingService.handleUpdatePrincipalSavingById({ 
         id, 
         userId,
+        name,
         depositeDate,
         nominal
     });

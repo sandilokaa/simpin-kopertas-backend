@@ -5,9 +5,9 @@ class PrincipalSavingRepository {
 
     /* ------------------- Handle Create Principal Saving ------------------- */
 
-    static async handleCreatePrincipalSaving({ userId, depositeDate, nominal }){
+    static async handleCreatePrincipalSaving({ userId, name, depositeDate, nominal }){
 
-        const handleCreatedPrincipalSaving = await PrincipalSavings.create({ userId, depositeDate, nominal });
+        const handleCreatedPrincipalSaving = await PrincipalSavings.create({ userId, name, depositeDate, nominal });
 
         return handleCreatedPrincipalSaving;
 
@@ -98,9 +98,10 @@ class PrincipalSavingRepository {
 
     /* ------------------- Handle Update Principal Saving By Id ------------------- */
 
-    static async handleUpdatePrincipalSavingById({ id, depositeDate, nominal }) {
+    static async handleUpdatePrincipalSavingById({ id, name, depositeDate, nominal }) {
 
         const handleUpdatedPrincipalSavingById = await PrincipalSavings.update({
+            name,
             depositeDate,
             nominal
         }, {
