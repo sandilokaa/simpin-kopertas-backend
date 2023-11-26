@@ -16,6 +16,21 @@ class PrincipalSavingRepository {
     /* ------------------- End Handle Create Principal Saving ------------------- */
 
 
+    /* ------------------- Handle Get One Principal Saving ------------------- */
+
+    static async handleGetOnePrincipalSaving({ name }) {
+        
+        const handleGetedPrincipalSaving = PrincipalSavings.findOne({
+            where: { name }
+        });
+
+        return handleGetedPrincipalSaving;
+
+    }
+
+    /* ------------------- Handle Get One Principal Saving ------------------- */
+
+
     /* ------------------- Handle Get All Principal Saving ------------------- */
 
     static async handleGetAllPrincipalSaving({ depositeDate, name }){
@@ -31,7 +46,7 @@ class PrincipalSavingRepository {
         };
 
         if (name) {
-            const searchPrincipalSavingByName = await Users.findAll({
+            const searchPrincipalSavingByName = await PrincipalSavings.findAll({
                 where: {
                     [Op.or]: [
                         { name: { [Op.like]: '%' + name + '%' } },
@@ -39,7 +54,7 @@ class PrincipalSavingRepository {
                 },
                 include: [
                     {
-                        model: PrincipalSavings
+                        model: Users
                     }
                 ],
                 limit: 10

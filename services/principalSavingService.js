@@ -45,9 +45,9 @@ class PrincipalSavingService {
 
             // ------------------------- End Payload Validation ------------------------- //
 
-            const handleGetAllPrincipalSaving = await principalSavingRepository.handleGetAllPrincipalSaving({ name });
+            const handleGetedPrincipalSaving = await principalSavingRepository.handleGetOnePrincipalSaving({ name });
 
-            if (handleGetAllPrincipalSaving) {
+            if (handleGetedPrincipalSaving) {
 
                 return {
                     status: false,
