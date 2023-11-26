@@ -285,6 +285,42 @@ class PrincipalSavingService {
 
     /* ------------------- End Handle Delete Principal Saving By Id ------------------- */
 
+
+    /* ------------------- Handle Get Principal Saving By UserId ------------------- */
+
+    static async handleGetAllPrincipalSavingByUserId({ userId }) {
+
+        try {
+
+            const handleGetedPrincipalSavingBySaleId = await principalSavingRepository.handleGetAllPrincipalSavingByUserId({ userId });
+
+            return {
+                status: true,
+                status_code: 200,
+                message: "Success get principal saving (:",
+                data: {
+                    handleGetedPrincipalSavingBySaleId: handleGetedPrincipalSavingBySaleId,
+                },
+            };
+
+        } catch (err) {
+
+            return {
+                status: false,
+                status_code: 500,
+                message: err.message,
+                data: {
+                    handleGetedPrincipalSavingBySaleId: null,
+                },
+            };
+
+        }
+
+    };
+
+    /* ------------------- End Handle Get Principal Saving By UserId ------------------- */
+
+
 };
 
 module.exports = PrincipalSavingService;

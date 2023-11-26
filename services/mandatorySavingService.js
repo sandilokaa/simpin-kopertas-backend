@@ -266,6 +266,41 @@ class MandatorySavingService {
 
     /* ------------------- End Handle Delete Mandatory Saving By Id ------------------- */
 
+
+    /* ------------------- Handle Get Mandatory Saving By UserId ------------------- */
+
+    static async handleGetAllMandatorySavingByUserId({ userId }) {
+
+        try {
+
+            const handleGetedMandatorySavingBySaleId = await mandatorySavingRepository.handleGetAllMandatorySavingByUserId({ userId });
+
+            return {
+                status: true,
+                status_code: 200,
+                message: "Success get mandatory saving (:",
+                data: {
+                    handleGetedMandatorySavingBySaleId: handleGetedMandatorySavingBySaleId,
+                },
+            };
+
+        } catch (err) {
+
+            return {
+                status: false,
+                status_code: 500,
+                message: err.message,
+                data: {
+                    handleGetedMandatorySavingBySaleId: null,
+                },
+            };
+
+        }
+
+    };
+
+    /* ------------------- End Handle Get Mandatory Saving By UserId ------------------- */
+
 };
 
 module.exports = MandatorySavingService;

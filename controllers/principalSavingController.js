@@ -117,10 +117,30 @@ const handleUpdatePrincipalSavingById = async(req, res) => {
 /* ------------------- End Handle Update Principal Saving By Id ------------------- */
 
 
+/* ------------------- Handle Get Principal Saving By UserId ------------------- */
+
+const handleGetAllPrincipalSavingByUserId = async(req, res) => {
+
+    const { userId } = req.params;
+
+    const { status, status_code, message, data} = await principalSavingService.handleGetAllPrincipalSavingByUserId({ userId });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+
+};
+
+/* ------------------- End Handle Get Principal Saving By UserId ------------------- */
+
+
 module.exports = {
     handleCreatePrincipalSaving,
     handleGetAllPrincipalSaving,
     handleGetPrincipalSavingById,
     handleDeletePrincipalSavingById,
-    handleUpdatePrincipalSavingById
+    handleUpdatePrincipalSavingById,
+    handleGetAllPrincipalSavingByUserId
 };

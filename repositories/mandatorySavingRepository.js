@@ -1,5 +1,5 @@
 const { MandatorySavings, Users } = require("../models");
-const { Op } = require("sequelize");
+const { Op, Sequelize, literal } = require("sequelize");
 
 class MandatorySavingRepository {
 
@@ -128,6 +128,29 @@ class MandatorySavingRepository {
     };
 
     /* ------------------- End Handle Update Mandatory Saving By Id ------------------- */
+
+
+     /* ------------------- Handle Get Mandatory Saving By UserId ------------------- */
+
+    static async handleGetAllMandatorySavingByUserId({ userId }) {
+
+        const query = {
+            where: { userId },
+            attributes: [
+                'id',
+                'depositeDate',
+                'nominal'
+            ],
+        };
+
+        const handleGetedMandatorySavingBySaleId = await MandatorySavings.findAll(query);
+
+        return handleGetedMandatorySavingBySaleId;
+
+    };
+
+
+    /* ------------------- End Handle Get Mandatory Saving By UserId ------------------- */
 
 };
 

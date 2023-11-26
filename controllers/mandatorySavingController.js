@@ -117,10 +117,30 @@ const handleUpdateMandatorySavingById = async(req, res) => {
 /* ------------------- End Handle Update Mandatory Saving By Id ------------------- */
 
 
+/* ------------------- Handle Get Mandatory Saving By UserId ------------------- */
+
+const handleGetAllMandatorySavingByUserId = async(req, res) => {
+
+    const { userId } = req.params;
+
+    const { status, status_code, message, data} = await mandatorySavingService.handleGetAllMandatorySavingByUserId({ userId });
+
+    res.status(status_code).send({
+        status: status,
+        message: message,
+        data: data,
+    });
+
+};
+
+/* ------------------- End Handle Get Mandatory Saving By UserId ------------------- */
+
+
 module.exports = {
     handleCreateMandatorySaving,
     handleGetAllMandatorySaving,
     handleGetMandatorySavingById,
     handleDeleteMandatorySavingById,
-    handleUpdateMandatorySavingById
+    handleUpdateMandatorySavingById,
+    handleGetAllMandatorySavingByUserId
 };

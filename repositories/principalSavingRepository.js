@@ -1,5 +1,5 @@
 const { PrincipalSavings, Users } = require("../models");
-const { Op } = require("sequelize");
+const { Op, Sequelize, literal } = require("sequelize");
 
 class PrincipalSavingRepository {
 
@@ -128,6 +128,30 @@ class PrincipalSavingRepository {
     };
 
     /* ------------------- End Handle Update Principal Saving By Id ------------------- */
+
+
+
+    /* ------------------- Handle Get Principal Saving By UserId ------------------- */
+
+    static async handleGetAllPrincipalSavingByUserId({ userId }) {
+
+        const query = {
+            where: { userId },
+            attributes: [
+                'id',
+                'depositeDate',
+                'nominal',
+            ],
+        };
+
+        const handleGetedPrincipalSavingBySaleId = await PrincipalSavings.findAll(query);
+
+        return handleGetedPrincipalSavingBySaleId;
+
+    };
+
+
+    /* ------------------- End Handle Get Principal Saving By UserId ------------------- */
 
 };
 

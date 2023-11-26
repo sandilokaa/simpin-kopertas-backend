@@ -82,6 +82,7 @@ app.get('/api/v1/complete-profile/:id', middleware.authenticate, userController.
 
 app.post('/api/v1/principal-saving', middleware.authenticate, principalSavingController.handleCreatePrincipalSaving);
 app.get('/api/v1/principal-saving', middleware.authenticate, principalSavingController.handleGetAllPrincipalSaving);
+app.get('/api/v1/:userId/principal-saving', middleware.authenticate, principalSavingController.handleGetAllPrincipalSavingByUserId);
 app.get('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleGetPrincipalSavingById);
 app.delete('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleDeletePrincipalSavingById);
 app.put('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleUpdatePrincipalSavingById);
@@ -94,6 +95,7 @@ app.put('/api/v1/principal-saving/:id', middleware.authenticate, principalSaving
 app.post('/api/v1/mandatory-saving', middleware.authenticate, mandatorySavingController.handleCreateMandatorySaving);
 app.get('/api/v1/mandatory-saving', middleware.authenticate, mandatorySavingController.handleGetAllMandatorySaving);
 app.get('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleGetMandatorySavingById);
+app.get('/api/v1/:userId/mandatory-saving', middleware.authenticate, mandatorySavingController.handleGetAllMandatorySavingByUserId);
 app.delete('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleDeleteMandatorySavingById);
 app.put('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleUpdateMandatorySavingById);
 
