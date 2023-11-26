@@ -18,10 +18,10 @@ class PrincipalSavingRepository {
 
     /* ------------------- Handle Get One Principal Saving ------------------- */
 
-    static async handleGetOnePrincipalSaving({ name }) {
+    static async handleGetPrincipalSavingByUserId({ userId }) {
         
         const handleGetedPrincipalSaving = PrincipalSavings.findOne({
-            where: { name }
+            where: { userId }
         });
 
         return handleGetedPrincipalSaving;

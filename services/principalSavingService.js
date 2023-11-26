@@ -45,7 +45,9 @@ class PrincipalSavingService {
 
             // ------------------------- End Payload Validation ------------------------- //
 
-            const handleGetedPrincipalSaving = await principalSavingRepository.handleGetOnePrincipalSaving({ name });
+            const handleGetedPrincipalSaving = await principalSavingRepository.handleGetPrincipalSavingByUserId({ userId });
+
+            
 
             if (handleGetedPrincipalSaving) {
 
@@ -177,7 +179,7 @@ class PrincipalSavingService {
                 return {
                     status: true,
                     status_code: 200,
-                    message: "Product deleted successfully (:",
+                    message: "Principal saving deleted successfully (:",
                     data: {
                         deletedPrincipalSaving: handleDeletedPrincipalSavingById,
                     },
@@ -246,7 +248,7 @@ class PrincipalSavingService {
                 return {
                     status: true,
                     status_code: 200,
-                    message: "Product updated successfully (:",
+                    message: "Principal saving updated successfully (:",
                     data: {
                         updatedPrincipalSaving: handleUpdatedPrincipalSavingById,
                     },

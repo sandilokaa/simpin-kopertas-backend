@@ -27,6 +27,7 @@ const religionController = require("./controllers/religionController");
 const genderController = require("./controllers/genderController");
 const userController = require("./controllers/userController");
 const principalSavingController = require("./controllers/principalSavingController");
+const mandatorySavingController = require("./controllers/mandatorySavingController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -86,6 +87,17 @@ app.delete('/api/v1/principal-saving/:id', middleware.authenticate, principalSav
 app.put('/api/v1/principal-saving/:id', middleware.authenticate, principalSavingController.handleUpdatePrincipalSavingById);
 
 /* -------------- End Principal Saving Endpoint -------------- */
+
+
+/* -------------- Mandatory Saving Endpoint -------------- */
+
+app.post('/api/v1/mandatory-saving', middleware.authenticate, mandatorySavingController.handleCreateMandatorySaving);
+app.get('/api/v1/mandatory-saving', middleware.authenticate, mandatorySavingController.handleGetAllMandatorySaving);
+app.get('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleGetMandatorySavingById);
+app.delete('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleDeleteMandatorySavingById);
+app.put('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleUpdateMandatorySavingById);
+
+/* -------------- End Mandatory Saving Endpoint -------------- */
 
 
 // ------------------------- End Define Routes ------------------------- //
