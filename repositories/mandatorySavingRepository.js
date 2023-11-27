@@ -39,7 +39,8 @@ class MandatorySavingRepository {
             where: {},
             include: [
                 {
-                    model: Users
+                    model: Users,
+                    attributes: ['email', 'memberNumber', 'phoneNumber']
                 }
                 
             ]
@@ -54,7 +55,8 @@ class MandatorySavingRepository {
                 },
                 include: [
                     {
-                        model: Users
+                        model: Users,
+                        attributes: ['email', 'memberNumber', 'phoneNumber']
                     }
                 ],
                 limit: 10
@@ -80,7 +82,8 @@ class MandatorySavingRepository {
             where: {},
             include: [
                 {
-                    model: Users
+                    model: Users,
+                    attributes: ['email', 'memberNumber', 'phoneNumber']
                 }
             ]
         }

@@ -39,7 +39,8 @@ class VoluntarySavingRepository {
             where: {},
             include: [
                 {
-                    model: Users
+                    model: Users,
+                    attributes: ['email', 'memberNumber', 'phoneNumber']
                 }
                 
             ]
@@ -54,7 +55,8 @@ class VoluntarySavingRepository {
                 },
                 include: [
                     {
-                        model: Users
+                        model: Users,
+                        attributes: ['email', 'memberNumber', 'phoneNumber']
                     }
                 ],
                 limit: 10
@@ -80,7 +82,8 @@ class VoluntarySavingRepository {
             where: {},
             include: [
                 {
-                    model: Users
+                    model: Users,
+                    attributes: ['email', 'memberNumber', 'phoneNumber']
                 }
             ]
         }
