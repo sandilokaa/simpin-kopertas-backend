@@ -138,9 +138,16 @@ class MandatorySavingRepository {
             where: { userId },
             attributes: [
                 'id',
+                'name',
                 'depositeDate',
                 'nominal'
             ],
+            include: [
+                {
+                    model: Users,
+                    attributes: ['email', 'memberNumber', 'phoneNumber']
+                }
+            ]
         };
 
         const handleGetedMandatorySavingBySaleId = await MandatorySavings.findAll(query);

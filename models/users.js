@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
 
       Users.hasOne(models.UserDetails);
       Users.hasMany(models.PrincipalSavings);
+      Users.hasMany(models.MandatorySavings);
+      Users.hasMany(models.VoluntarySavings);
     
     }
   }

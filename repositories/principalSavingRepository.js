@@ -139,9 +139,16 @@ class PrincipalSavingRepository {
             where: { userId },
             attributes: [
                 'id',
+                'name',
                 'depositeDate',
-                'nominal',
+                'nominal'
             ],
+            include: [
+                {
+                    model: Users,
+                    attributes: ['email', 'memberNumber', 'phoneNumber']
+                }
+            ]
         };
 
         const handleGetedPrincipalSavingBySaleId = await PrincipalSavings.findAll(query);

@@ -28,6 +28,7 @@ const genderController = require("./controllers/genderController");
 const userController = require("./controllers/userController");
 const principalSavingController = require("./controllers/principalSavingController");
 const mandatorySavingController = require("./controllers/mandatorySavingController");
+const voluntarySavingController = require("./controllers/voluntarySavingController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -100,6 +101,18 @@ app.delete('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySav
 app.put('/api/v1/mandatory-saving/:id', middleware.authenticate, mandatorySavingController.handleUpdateMandatorySavingById);
 
 /* -------------- End Mandatory Saving Endpoint -------------- */
+
+
+/* -------------- Voluntary Saving Endpoint -------------- */
+
+app.post('/api/v1/voluntary-saving', middleware.authenticate, voluntarySavingController.handleCreateVoluntarySaving);
+app.get('/api/v1/voluntary-saving', middleware.authenticate, voluntarySavingController.handleGetAllVoluntarySaving);
+app.get('/api/v1/voluntary-saving/:id', middleware.authenticate, voluntarySavingController.handleGetVoluntarySavingById);
+app.get('/api/v1/:userId/voluntary-saving', middleware.authenticate, voluntarySavingController.handleGetAllVoluntarySavingByUserId);
+app.delete('/api/v1/voluntary-saving/:id', middleware.authenticate, voluntarySavingController.handleDeleteVoluntarySavingById);
+app.put('/api/v1/voluntary-saving/:id', middleware.authenticate, voluntarySavingController.handleUpdateVoluntarySavingById);
+
+/* -------------- End Voluntary Saving Endpoint -------------- */
 
 
 // ------------------------- End Define Routes ------------------------- //
