@@ -153,9 +153,9 @@ class VoluntarySavingRepository {
             ]
         };
 
-        const handleGetedVoluntarySavingBySaleId = await VoluntarySavings.findAll(query);
+        const handleGetedVoluntarySavingByUserId = await VoluntarySavings.findAll(query);
 
-        return handleGetedVoluntarySavingBySaleId;
+        return handleGetedVoluntarySavingByUserId;
 
     };
 

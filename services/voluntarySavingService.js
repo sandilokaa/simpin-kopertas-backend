@@ -272,14 +272,14 @@ class VoluntarySavingService {
 
         try {
 
-            const handleGetedVoluntarySavingBySaleId = await voluntarySavingRepository.handleGetAllVoluntarySavingByUserId({ userId });
+            const handleGetedVoluntarySavingByUserId = await voluntarySavingRepository.handleGetAllVoluntarySavingByUserId({ userId });
 
             return {
                 status: true,
                 status_code: 200,
                 message: "Success get voluntary saving (:",
                 data: {
-                    handleGetedVoluntarySavingBySaleId: handleGetedVoluntarySavingBySaleId,
+                    handleGetedVoluntarySavingByUserId: handleGetedVoluntarySavingByUserId,
                 },
             };
 
@@ -290,7 +290,7 @@ class VoluntarySavingService {
                 status_code: 500,
                 message: err.message,
                 data: {
-                    handleGetedVoluntarySavingBySaleId: null,
+                    handleGetedVoluntarySavingByUserId: null,
                 },
             };
 

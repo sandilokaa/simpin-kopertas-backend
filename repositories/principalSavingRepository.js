@@ -154,9 +154,9 @@ class PrincipalSavingRepository {
             ]
         };
 
-        const handleGetedPrincipalSavingBySaleId = await PrincipalSavings.findAll(query);
+        const handleGetedPrincipalSavingByUserId = await PrincipalSavings.findAll(query);
 
-        return handleGetedPrincipalSavingBySaleId;
+        return handleGetedPrincipalSavingByUserId;
 
     };
 

@@ -292,14 +292,14 @@ class PrincipalSavingService {
 
         try {
 
-            const handleGetedPrincipalSavingBySaleId = await principalSavingRepository.handleGetAllPrincipalSavingByUserId({ userId });
+            const handleGetedPrincipalSavingByUserId = await principalSavingRepository.handleGetAllPrincipalSavingByUserId({ userId });
 
             return {
                 status: true,
                 status_code: 200,
                 message: "Success get principal saving (:",
                 data: {
-                    handleGetedPrincipalSavingBySaleId: handleGetedPrincipalSavingBySaleId,
+                    handleGetedPrincipalSavingByUserId: handleGetedPrincipalSavingByUserId,
                 },
             };
 
@@ -310,7 +310,7 @@ class PrincipalSavingService {
                 status_code: 500,
                 message: err.message,
                 data: {
-                    handleGetedPrincipalSavingBySaleId: null,
+                    handleGetedPrincipalSavingByUserId: null,
                 },
             };
 

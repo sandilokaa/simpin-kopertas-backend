@@ -273,14 +273,14 @@ class MandatorySavingService {
 
         try {
 
-            const handleGetedMandatorySavingBySaleId = await mandatorySavingRepository.handleGetAllMandatorySavingByUserId({ userId });
+            const handleGetedMandatorySavingByUserId = await mandatorySavingRepository.handleGetAllMandatorySavingByUserId({ userId });
 
             return {
                 status: true,
                 status_code: 200,
                 message: "Success get mandatory saving (:",
                 data: {
-                    handleGetedMandatorySavingBySaleId: handleGetedMandatorySavingBySaleId,
+                    handleGetedMandatorySavingByUserId: handleGetedMandatorySavingByUserId,
                 },
             };
 
@@ -291,7 +291,7 @@ class MandatorySavingService {
                 status_code: 500,
                 message: err.message,
                 data: {
-                    handleGetedMandatorySavingBySaleId: null,
+                    handleGetedMandatorySavingByUserId: null,
                 },
             };
 

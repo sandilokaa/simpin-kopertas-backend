@@ -153,9 +153,9 @@ class MandatorySavingRepository {
             ]
         };
 
-        const handleGetedMandatorySavingBySaleId = await MandatorySavings.findAll(query);
+        const handleGetedMandatorySavingByUserId = await MandatorySavings.findAll(query);
 
-        return handleGetedMandatorySavingBySaleId;
+        return handleGetedMandatorySavingByUserId;
 
     };
 
