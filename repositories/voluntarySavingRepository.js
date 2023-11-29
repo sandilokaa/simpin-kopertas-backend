@@ -135,7 +135,7 @@ class VoluntarySavingRepository {
 
      /* ------------------- Handle Get Voluntary Saving By UserId ------------------- */
 
-    static async handleGetAllVoluntarySavingByUserId({ userId }) {
+    static async handleGetAllVoluntarySavingByUserId({ userId, depositeDate }) {
 
         const query = {
             where: { userId },
