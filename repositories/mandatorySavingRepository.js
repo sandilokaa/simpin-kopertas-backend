@@ -135,7 +135,7 @@ class MandatorySavingRepository {
 
      /* ------------------- Handle Get Mandatory Saving By UserId ------------------- */
 
-    static async handleGetAllMandatorySavingByUserId({ userId }) {
+    static async handleGetAllMandatorySavingByUserId({ userId, depositeDate }) {
 
         const query = {
             where: { userId },
@@ -152,6 +152,26 @@ class MandatorySavingRepository {
                 }
             ]
         };
+
+        if (depositeDate) {
+            const searchMandatorySaving = await MandatorySavings.findAll({
+                where: {
+                    userId,
+                    [Op.or]: [
+                        { depositeDate: { [Op.like]: '%' + depositeDate + '%' } },
+                    ]
+                },
+                include: [
+                    {
+                        model: Users,
+                        attributes: ['email', 'memberNumber', 'phoneNumber']
+                    }
+                ],
+                limit: 10
+            });
+
+            return searchMandatorySaving;
+        }
 
         const handleGetedMandatorySavingByUserId = await MandatorySavings.findAll(query);
 

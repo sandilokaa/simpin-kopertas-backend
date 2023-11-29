@@ -268,11 +268,11 @@ class VoluntarySavingService {
 
     /* ------------------- Handle Get Voluntary Saving By UserId ------------------- */
 
-    static async handleGetAllVoluntarySavingByUserId({ userId }) {
+    static async handleGetAllVoluntarySavingByUserId({ userId, depositeDate }) {
 
         try {
 
-            const handleGetedVoluntarySavingByUserId = await voluntarySavingRepository.handleGetAllVoluntarySavingByUserId({ userId });
+            const handleGetedVoluntarySavingByUserId = await voluntarySavingRepository.handleGetAllVoluntarySavingByUserId({ userId, depositeDate });
 
             return {
                 status: true,

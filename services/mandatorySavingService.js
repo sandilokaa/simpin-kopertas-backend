@@ -269,11 +269,11 @@ class MandatorySavingService {
 
     /* ------------------- Handle Get Mandatory Saving By UserId ------------------- */
 
-    static async handleGetAllMandatorySavingByUserId({ userId }) {
+    static async handleGetAllMandatorySavingByUserId({ userId, depositeDate }) {
 
         try {
 
-            const handleGetedMandatorySavingByUserId = await mandatorySavingRepository.handleGetAllMandatorySavingByUserId({ userId });
+            const handleGetedMandatorySavingByUserId = await mandatorySavingRepository.handleGetAllMandatorySavingByUserId({ userId, depositeDate });
 
             return {
                 status: true,

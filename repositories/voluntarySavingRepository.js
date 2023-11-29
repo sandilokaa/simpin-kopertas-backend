@@ -153,6 +153,26 @@ class VoluntarySavingRepository {
             ]
         };
 
+        if (depositeDate) {
+            const searchVoluntarySaving = await VoluntarySavings.findAll({
+                where: {
+                    userId,
+                    [Op.or]: [
+                        { depositeDate: { [Op.like]: '%' + depositeDate + '%' } },
+                    ]
+                },
+                include: [
+                    {
+                        model: Users,
+                        attributes: ['email', 'memberNumber', 'phoneNumber']
+                    }
+                ],
+                limit: 10
+            });
+
+            return searchVoluntarySaving;
+        }
+
         const handleGetedVoluntarySavingByUserId = await VoluntarySavings.findAll(query);
 
         return handleGetedVoluntarySavingByUserId;

@@ -123,7 +123,9 @@ const handleGetAllMandatorySavingByUserId = async(req, res) => {
 
     const { userId } = req.params;
 
-    const { status, status_code, message, data} = await mandatorySavingService.handleGetAllMandatorySavingByUserId({ userId });
+    const { depositeDate } = req.query;
+
+    const { status, status_code, message, data} = await mandatorySavingService.handleGetAllMandatorySavingByUserId({ userId, depositeDate });
 
     res.status(status_code).send({
         status: status,

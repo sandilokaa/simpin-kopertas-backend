@@ -123,7 +123,9 @@ const handleGetAllVoluntarySavingByUserId = async(req, res) => {
 
     const { userId } = req.params;
 
-    const { status, status_code, message, data} = await voluntarySavingService.handleGetAllVoluntarySavingByUserId({ userId });
+    const { depositeDate } = req.query;
+
+    const { status, status_code, message, data} = await voluntarySavingService.handleGetAllVoluntarySavingByUserId({ userId, depositeDate });
 
     res.status(status_code).send({
         status: status,
