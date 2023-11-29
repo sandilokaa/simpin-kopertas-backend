@@ -29,6 +29,8 @@ const userController = require("./controllers/userController");
 const principalSavingController = require("./controllers/principalSavingController");
 const mandatorySavingController = require("./controllers/mandatorySavingController");
 const voluntarySavingController = require("./controllers/voluntarySavingController");
+const loanTypeController = require("./controllers/loanTypeController");
+const loanController = require("./controllers/loanController");
 
 // ------------------------- End Import Controllers ------------------------- //
 
@@ -68,6 +70,14 @@ app.post('/api/v1/gender', genderController.handleCreateGenderData);
 app.get('/api/v1/gender', genderController.handleGetAllGenderData);
 
 /* -------------- End Gender Endpoint -------------- */
+
+
+/* -------------- Loan Type Endpoint -------------- */
+
+app.post('/api/v1/loan-type', loanTypeController.handleCreateLoanTypeData);
+app.get('/api/v1/loan-type', loanTypeController.handleGetAllLoanTypeData);
+
+/* -------------- End Loan Type Endpoint -------------- */
 
 
 /* -------------- User Endpoint -------------- */
@@ -113,6 +123,18 @@ app.delete('/api/v1/voluntary-saving/:id', middleware.authenticate, voluntarySav
 app.put('/api/v1/voluntary-saving/:id', middleware.authenticate, voluntarySavingController.handleUpdateVoluntarySavingById);
 
 /* -------------- End Voluntary Saving Endpoint -------------- */
+
+
+/* -------------- Loan Endpoint -------------- */
+
+app.post('/api/v1/loan', middleware.authenticate, loanController.handleCreateLoan);
+app.get('/api/v1/loan', middleware.authenticate, loanController.handleGetAllLoan);
+app.get('/api/v1/loan/:id', middleware.authenticate, loanController.handleGetLoanById);
+app.get('/api/v1/:userId/loan', middleware.authenticate, loanController.handleGetLoanByUserId);
+app.put('/api/v1/loan/:id', middleware.authenticate, loanController.handleUpdateLoanById);
+app.delete('/api/v1/loan/:id', middleware.authenticate, loanController.handleDeleteLoanById);
+
+/* -------------- End Loan Endpoint -------------- */
 
 
 // ------------------------- End Define Routes ------------------------- //
