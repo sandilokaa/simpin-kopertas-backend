@@ -134,6 +134,15 @@ class LoanRepository{
                         { loanDate: { [Op.like]: '%' + loanDate + '%' } },
                     ]
                 },
+                attributes: [
+                'id',
+                'userId',
+                'typeId',
+                'name',
+                'loanDate',
+                'nominal',
+                'installmentAmount'
+                ],
                 include: [
                     {
                         model: Users,

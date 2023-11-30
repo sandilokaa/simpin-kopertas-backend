@@ -186,14 +186,14 @@ class LoanService {
 
         try {
             
-            const handleGetedLoanByuserId = await loanRepository.handleGetLoanByUserId({ userId, loanDate });
+            const handleGetedLoanByUserId = await loanRepository.handleGetLoanByUserId({ userId, loanDate });
 
             return {
                 status: true,
                 status_code: 201,
                 message: "Loan data displayed successfully (:",
                 data: {
-                    handleGetedLoanByuserId: handleGetedLoanByuserId,
+                    handleGetedLoanByUserId: handleGetedLoanByUserId,
                 },
             };
 
@@ -204,7 +204,7 @@ class LoanService {
                 status_code: 500,
                 message: err.message,
                 data: {
-                    handleGetedLoanByuserId: null,
+                    handleGetedLoanByUserId: null,
                 },
             };
 
